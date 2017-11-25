@@ -11,21 +11,24 @@ If you are using zplug, just add the code below in your .zshrc.
 
 ```zsh
 zplug "zsh-users/zaw"
-zplug "GeneralD/zaw-src-unity-launcher", on:zsh-users/zaw
+zplug "GeneralD/zaw-src-unity-launcher", on:zsh-users/zaw, on:Tarrasch/zsh-functional, defer:2, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "Tarrasch/zsh-functional"
 
 # if you don't add next line, necessary command will be installed automatically.
 zplug "sttz/install-unity", as:command, use:'(*).py', rename-to:'$1'
-
 ```
 
 For oh-my-zsh, clone this repo into ~/.oh-my-zsh/custom/plugins and add plugin as below.
 
 ```zsh
-plugins+=(zaw zaw-src-unity-launcher)
+plugins+=(zaw zaw-src-unity-launcher zsh-functional)
 ```
 
 ## Dependencies
+
+- darwin
+ 
+Currently, this compatible with only macOS.
 
 - any nerd-font
 
