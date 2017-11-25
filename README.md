@@ -24,6 +24,19 @@ For oh-my-zsh, clone this repo into ~/.oh-my-zsh/custom/plugins and add plugin a
 plugins+=(zaw zaw-src-unity-launcher zsh-functional)
 ```
 
+## Customize
+
+Unity installed directory is /Applications as default.
+However, you can change the directory as below.
+
+```zsh
+ZAW_UNITY_PATH=~/Developer/Unity_Versions
+```
+
+### Caution
+
+Above setting can change the directory to open Unity version you select. However, it doesn't change the destination of install-unity.
+
 ## Dependencies
 
 - darwin
