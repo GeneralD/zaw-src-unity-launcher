@@ -11,11 +11,11 @@ If you are using zplug, just add the code below in your .zshrc.
 
 ```zsh
 zplug "zsh-users/zaw"
-zplug "GeneralD/zaw-src-unity-launcher", on:zsh-users/zaw, on:Tarrasch/zsh-functional, defer:2, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "GeneralD/zaw-src-unity-launcher", on:"zsh-users/zaw", on:"Tarrasch/zsh-functional", defer:2
 zplug "Tarrasch/zsh-functional"
 
 # if you don't add next line, necessary command will be installed automatically.
-zplug "sttz/install-unity", as:command, use:'(*).py', rename-to:'$1'
+zplug "sttz/install-unity", as:command, use:'(*).py', rename-to:'$1', if:"[[ $OSTYPE == *darwin* ]]"
 ```
 
 For oh-my-zsh, clone this repo into ~/.oh-my-zsh/custom/plugins and add plugin as below.
@@ -53,6 +53,16 @@ brew cask search nerd-font
 ```
 
 Then, install and set any nerd-font to your terminal application.
+
+## Trouble Shooting
+
+- python causes error
+ 
+To fix the error, cd to directory install-unity.py exists, then run
+
+```sh
+pyenv local 2.7.x
+```
 
 ## Licence
 
