@@ -15,7 +15,16 @@ zplug "GeneralD/zaw-src-unity-launcher", on:"zsh-users/zaw", on:"Tarrasch/zsh-fu
 zplug "Tarrasch/zsh-functional"
 
 # if you don't add next line, necessary command will be installed automatically.
-zplug "sttz/install-unity", as:command, use:'(*).py', rename-to:'$1', if:"[[ $OSTYPE == *darwin* ]]"
+zplug "sttz/install-unity",\
+  as:command,\
+  use:'(*).py',\
+  rename-to:'$1',\
+  if:"[[ $OSTYPE == *darwin* ]]",\
+  hook-build:"pyenv versions --bare 2>/dev/null \
+            | gsort --version-sort --reverse \
+            | egrep '2.[0-9]+.[0-9]+' \
+            | head -n 1 \
+            > $ZPLUG_REPOS/sttz/install-unity/.python-version"
 ```
 
 For oh-my-zsh, clone this repo into ~/.oh-my-zsh/custom/plugins and add plugin as below.
@@ -64,6 +73,5 @@ To fix the error, cd to directory install-unity.py exists, then run
 pyenv local 2.7.x
 ```
 
-## Licence
+If you are using pyenv and installed [install-unity](https://github.com/sttz/install-unity) with zplug, hook-build part should fix it automatically.
 
-DTFPL
