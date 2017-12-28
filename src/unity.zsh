@@ -13,7 +13,7 @@ function zaw-src-unity() {
 
 function zaw-src-unity-proj() {
     if [[ -f ./ProjectSettings/ProjectVersion.txt ]]; then
-        BUFFER="${(j:; :)@}/Contents/MacOS/Unity -projectPath $(pwd) &"
+        BUFFER="\"${(j:; :)@}Contents/MacOS/Unity\" -projectPath \"$(pwd)\" &"
     else
         echo "\033[0;33mHere is not Unity project root!"
     fi
@@ -23,7 +23,7 @@ function zaw-src-unity-proj() {
 function zaw-src-unity-remove() {
     local dir=`dirname ${(j:; :)@}`
     echo "\033[0;33mDo you want to remove $dir? (y/n)"
-    if read -qs && BUFFER="sudo rm -rf $dir"
+    if read -qs && BUFFER="sudo rm -rf \"$dir\""
     zle accept-line
 }
 
